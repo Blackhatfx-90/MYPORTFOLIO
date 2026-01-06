@@ -17,7 +17,7 @@ const projects = [
         title: "BHARAT.AI DEV",
         description: "AI that thinks like a senior engineer. A next-gen AI coding assistant built to autonomously solve complex development tasks.",
         tags: ["React", "Artificial Intelligence", "Tailwind CSS", "Vite"],
-        image: "/project-2.png",
+        image: "/bharat-ai.jpg",
         links: { demo: "https://bharat-dev-ai.vercel.app/", code: "#" },
     },
     {
