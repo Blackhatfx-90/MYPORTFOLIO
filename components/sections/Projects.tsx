@@ -7,23 +7,23 @@ import Link from "next/link";
 
 const projects = [
     {
+        title: "Forex & Crypto Algo Bot",
+        description: "Automated trading system utilizing advanced algorithms for market analysis and signal generation. Consistent profitability in Forex & Crypto markets.",
+        tags: ["Python", "MQL5", "Binance API", "MetaTrader"],
+        image: "/project-1.png",
+        links: { demo: "#", code: "#" },
+    },
+    {
         title: "Vercel AI SDK Integration",
         description: "A comprehensive dashboard for managing AI agents and workflows. Features real-time streaming and model selection.",
         tags: ["Next.js", "Vercel AI", "Tailwind", "Shadcn"],
-        image: "/project-1.png", // specific placeholders would be needed, using generic for now
+        image: "/project-2.png",
         links: { demo: "#", code: "#" },
     },
     {
         title: "FinTech Dashboard",
         description: "High-performance financial analytics platform with real-time WebSocket data feeds and interactive charts.",
         tags: ["React", "D3.js", "WebSockets", "Framer Motion"],
-        image: "/project-2.png",
-        links: { demo: "#", code: "#" },
-    },
-    {
-        title: "E-Commerce Headless Store",
-        description: "Ultra-fast headless Shopify storefront with custom 3D product configurator.",
-        tags: ["Next.js", "Shopify API", "Three.js", "Zustand"],
         image: "/project-3.png",
         links: { demo: "#", code: "#" },
     },

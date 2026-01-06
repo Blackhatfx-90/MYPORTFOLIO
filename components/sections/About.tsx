@@ -16,8 +16,8 @@ const features = [
     },
     {
         icon: <Globe className="w-8 h-8 text-green-400" />,
-        title: "System Architect",
-        description: "Designing robust cloud infrastructure and microservices.",
+        title: "Quantitative Trader",
+        description: "3+ Years in Forex & 2+ Years in Crypto. Designing profitable algo bots and signals.",
     },
 ];
 

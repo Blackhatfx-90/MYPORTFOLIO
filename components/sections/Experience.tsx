@@ -4,6 +4,12 @@ import { motion } from "framer-motion";
 
 const experiences = [
     {
+        year: "2023 - Present",
+        role: "Algo Trading Developer & Quant",
+        company: "Self-Employed",
+        description: "Specialized in Forex (3+ years) and Crypto (2+ years) markets. Developed automated trading bots, signal generators, and backtested strategies using Python and MQL.",
+    },
+    {
         year: "2024 - Present",
         role: "Senior Frontend Engineer",
         company: "TechCorp Inc.",
@@ -14,12 +20,6 @@ const experiences = [
         role: "Full Stack Developer",
         company: "StartUp Lab",
         description: "Developed and deployed critical features for high-growth startups. Utilized Next.js and Supabase.",
-    },
-    {
-        year: "2019 - 2021",
-        role: "UI/UX Developer",
-        company: "Creative Studio",
-        description: "Designed and implemented award-winning interfaces for international clients. Focused on interaction design.",
     },
 ];
 
