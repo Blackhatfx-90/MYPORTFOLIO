@@ -57,7 +57,7 @@ export default function Hero() {
                     </div>
                 </motion.div>
 
-                {/* Right: Abstract Visual / Terminal */}
+                {/* Right: Profile Visual */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -66,27 +66,18 @@ export default function Hero() {
                 >
                     <div className="relative w-full max-w-[500px] aspect-square mx-auto">
                         <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-3xl blur-2xl transform rotate-6" />
-                        <div className="relative h-full w-full bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl flex flex-col gap-4 overflow-hidden">
-                            {/* Fake Terminal Header */}
-                            <div className="flex items-center gap-2 mb-2">
-                                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                                <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                            </div>
-
-                            {/* Code Content */}
-                            <div className="font-mono text-sm text-gray-400 space-y-1">
-                                <p><span className="text-purple-400">const</span> <span className="text-yellow-300">portfolio</span> = <span className="text-blue-400">new</span> <span className="text-green-400">Experience</span>({`{`}</p>
-                                <p className="pl-4"><span className="text-blue-300">mode</span>: <span className="text-orange-300">"cinematic"</span>,</p>
-                                <p className="pl-4"><span className="text-blue-300">theme</span>: <span className="text-orange-300">"ultra-dark"</span>,</p>
-                                <p className="pl-4"><span className="text-blue-300">tech</span>: [<span className="text-orange-300">"Next.js"</span>, <span className="text-orange-300">"Tailwind"</span>],</p>
-                                <p className="pl-4"><span className="text-blue-300">performance</span>: <span className="text-purple-400">100</span></p>
-                                <p>{`}`});</p>
-                                <p className="text-gray-600 animate-pulse">_</p>
-                            </div>
-
-                            <div className="absolute bottom-0 right-0 p-6 opacity-20">
-                                <Terminal className="w-32 h-32" />
+                        <div className="relative h-full w-full bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl overflow-hidden">
+                            <div className="relative w-full h-full rounded-xl overflow-hidden">
+                                <img
+                                    src="/profile.jpg"
+                                    alt="Priyanshu Shukla"
+                                    className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                                <div className="absolute bottom-6 left-6 right-6">
+                                    <h3 className="text-2xl font-bold text-white">Priyanshu Shukla</h3>
+                                    <p className="text-primary font-medium">Full Stack Developer</p>
+                                </div>
                             </div>
                         </div>
                     </div>

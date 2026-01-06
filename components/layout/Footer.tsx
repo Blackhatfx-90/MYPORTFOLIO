@@ -16,7 +16,7 @@ export default function Footer() {
                     <Link href="#" className="text-gray-500 hover:text-primary transition-colors">
                         <Twitter className="w-5 h-5" />
                     </Link>
-                    <Link href="#" className="text-gray-500 hover:text-primary transition-colors">
+                    <Link href="https://www.linkedin.com/in/priyanshu-shukla-35630b332/" className="text-gray-500 hover:text-primary transition-colors">
                         <Linkedin className="w-5 h-5" />
                     </Link>
                     <Link href="#" className="text-gray-500 hover:text-primary transition-colors">

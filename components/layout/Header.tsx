@@ -44,7 +44,7 @@ export default function Header() {
                         href="/"
                         className="text-xl font-bold tracking-tighter text-foreground"
                     >
-                        DEV<span className="text-primary">.</span>PORTFOLIO
+                        PRIYANSHU<span className="text-primary">.</span>DEV
                     </Link>
 
                     <nav className="hidden md:flex gap-8">
