@@ -6,10 +6,10 @@ import { ExternalLink, Github, Code } from "lucide-react";
 
 const projects = [
   {
-    title: "Forex & Crypto Algo Bot",
-    category: "QUANT TRADING",
-    description: "Automated high-frequency trading system utilizing advanced proprietary algorithms for real-time market analysis and signal execution.",
-    tags: ["Python", "MQL5", "Binance API", "MetaTrader"],
+    title: "Enterprise SaaS Platform",
+    category: "FULL STACK WEB",
+    description: "Scalable B2B multi-tenant architecture with real-time collaboration, role-based access control, and seamless integrations.",
+    tags: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
     image: "/project-1.png", // Use fallback since it doesn't exist
     links: { demo: "#", code: "#" },
     color: "primary",

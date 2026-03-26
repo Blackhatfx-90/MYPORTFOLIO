@@ -7,13 +7,13 @@ import { ArrowRight, Github, Linkedin, Twitter, ChevronDown } from "lucide-react
 const roles = [
   "Full Stack Developer",
   "AI Integrator",
-  "Quantitative Trader",
-  "Next.js Engineer",
-  "Algo Bot Builder",
+  "Software Engineer",
+  "Next.js Expert",
+  "UI/UX Enthusiast",
 ];
 
 const stats = [
-  { value: "3+", label: "Years Trading" },
+  { value: "3+", label: "Years Experience" },
   { value: "15+", label: "Projects Built" },
   { value: "5+", label: "AI Tools Shipped" },
 ];
@@ -203,7 +203,7 @@ export default function Hero() {
             transition={{ delay: 0.6 }}
             className="text-base md:text-lg text-gray-400 max-w-lg leading-relaxed"
           >
-            I craft high-performance, cinematic digital experiences — blending engineering precision with creative design. From AI tools to algo trading bots, I build things that matter.
+            I craft high-performance, cinematic digital experiences — blending engineering precision with creative design. From intelligent AI agents to scalable web platforms, I build things that matter.
           </motion.p>
 
           {/* CTAs */}

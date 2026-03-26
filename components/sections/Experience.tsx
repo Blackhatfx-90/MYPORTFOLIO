@@ -7,10 +7,10 @@ import { Briefcase, Activity, Code2, Database } from "lucide-react";
 const experiences = [
   {
     year: "2023 — Present",
-    role: "Algo Trading Developer & Quant",
-    company: "Self-Employed / Proprietary Trading",
-    description: "Architected and deployed high-frequency automated trading systems for Forex and Crypto markets. Built backtesting engines and predictive signal generators utilizing Python, Pandas, and MQL.",
-    tags: ["Python", "MQL5", "Algorithmic Trading", "Data Science"],
+    role: "Freelance Software Engineer",
+    company: "Self-Employed / Independent",
+    description: "Architected and deployed complex, high-performance web applications for international clients. Built scalable backend systems and responsive modern interfaces.",
+    tags: ["React", "Node.js", "System Design", "AWS"],
     icon: <Activity className="w-5 h-5" />,
     color: "highlight",
   },
@@ -61,7 +61,7 @@ export default function Experience() {
             Professional <span className="text-gradient-cyan">Journey</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-            A track record of engineering scalable platforms and profitable trading algorithms.
+            A track record of engineering scalable platforms and intelligent software solutions.
           </p>
         </motion.div>
 

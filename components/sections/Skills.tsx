@@ -10,8 +10,8 @@ const skillCategories = [
     color: "primary",
   },
   {
-    title: "Quant & Algo",
-    skills: ["Python", "MQL4/MQL5", "Pine Script", "Binance API", "Backtesting"],
+    title: "Backend & DB",
+    skills: ["Python", "PostgreSQL", "MongoDB", "REST APIs", "GraphQL"],
     color: "highlight",
   },
   {
@@ -96,7 +96,7 @@ export default function Skills() {
           <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10" />
           
           <div className="marquee-track gap-12 text-5xl md:text-7xl font-black text-white/5 whitespace-nowrap">
-            {Array(4).fill("NEXT.JS • REACT • TYPESCRIPT • QUANT • PYTHON • ").map((text, i) => (
+            {Array(4).fill("NEXT.JS • REACT • TYPESCRIPT • NODE.JS • PYTHON • ").map((text, i) => (
               <span key={i}>{text}</span>
             ))}
           </div>

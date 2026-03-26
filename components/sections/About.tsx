@@ -21,8 +21,8 @@ const features = [
   },
   {
     icon: <BarChart3 className="w-6 h-6" />,
-    title: "Quant Trader",
-    description: "3+ years Forex, 2+ years Crypto. Designing profitable algo bots, signals, and backtested strategies.",
+    title: "System Architect",
+    description: "Designing resilient backend architectures, optimizing databases, and ensuring high-availability systems.",
     color: "highlight",
     glow: "rgba(0,255,157,0.3)",
   },
@@ -59,7 +59,7 @@ export default function About() {
             <span className="text-gradient-primary">Code</span>
           </h2>
           <p className="text-lg text-gray-400 leading-relaxed">
-            I&apos;m a self-driven developer and quant who thrives at the intersection of engineering, design, and finance. Every project I build is crafted with obsessive attention to detail — because great software deserves great aesthetics.
+            I&apos;m a self-driven developer who thrives at the intersection of complex engineering and beautiful design. Every project I build is crafted with obsessive attention to detail — because great software deserves great aesthetics.
           </p>
         </motion.div>
 
@@ -113,7 +113,7 @@ export default function About() {
                 <div><span className="text-accent">const</span> <span className="text-primary">developer</span> = {"{"}</div>
                 <div className="pl-4"><span className="text-gray-500">name:</span> <span className="text-highlight">&quot;Priyanshu Shukla&quot;</span>,</div>
                 <div className="pl-4"><span className="text-gray-500">location:</span> <span className="text-highlight">&quot;India 🇮🇳&quot;</span>,</div>
-                <div className="pl-4"><span className="text-gray-500">role:</span> <span className="text-highlight">&quot;Full Stack + AI + Quant&quot;</span>,</div>
+                <div className="pl-4"><span className="text-gray-500">role:</span> <span className="text-highlight">&quot;Full Stack + AI Engineer&quot;</span>,</div>
                 <div className="pl-4"><span className="text-gray-500">available:</span> <span className="text-green-400">true</span>,</div>
                 <div className="pl-4"><span className="text-gray-500">passion:</span> <span className="text-highlight">&quot;Building the future&quot;</span>,</div>
                 <div>{"}"}</div>
