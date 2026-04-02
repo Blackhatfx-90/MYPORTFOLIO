@@ -26,7 +26,7 @@ export default function Footer() {
             </span>
           </Link>
           <div className="text-sm text-gray-500 font-mono">
-            © {new Date().getFullYear()} Architecting the web.
+            © 2026 Priyanshu Shukla · hello@aiwebify.site · Remote Global
           </div>
         </div>
 
@@ -36,7 +36,7 @@ export default function Footer() {
             { href: "#", icon: <Github className="w-4 h-4" />, label: "GitHub" },
             { href: "https://x.com/TheeeRakeee", icon: <Twitter className="w-4 h-4" />, label: "Twitter" },
             { href: "https://www.linkedin.com/in/priyanshu-shukla-35630b332/", icon: <Linkedin className="w-4 h-4" />, label: "LinkedIn" },
-            { href: "mailto:priyanshushukla.up26@gmail.com", icon: <Mail className="w-4 h-4" />, label: "Email" },
+            { href: "mailto:hello@aiwebify.site", icon: <Mail className="w-4 h-4" />, label: "Email" },
           ].map((s, i) => (
             <a
               key={i}

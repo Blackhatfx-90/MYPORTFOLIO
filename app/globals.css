@@ -275,6 +275,7 @@ body {
   padding: 1px;
   background: linear-gradient(135deg, var(--primary), var(--accent), var(--highlight));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: border-flow 4s linear infinite;
@@ -439,4 +440,102 @@ body {
 }
 .card-shine:hover::after {
   transform: rotate(45deg) translateX(400%);
+}
+
+/* ================================
+   PRINT STYLES (Resume Mode)
+================================ */
+@media print {
+  @page {
+    margin: 2cm;
+    size: A4;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    cursor: default !important;
+  }
+
+  /* Hide non-resume elements */
+  header, 
+  footer,
+  canvas,
+  .orb,
+  .scroll-progress,
+  .grid-bg,
+  .dot-grid,
+  .section-badge .animate-ping,
+  nav,
+  button,
+  .btn-primary,
+  .btn-outline,
+  [href="#contact"],
+  .cursor-dot,
+  .cursor-ring,
+  .scroll-indicator,
+  a[href^="#"] {
+    display: none !important;
+  }
+
+  /* Reset layout for print */
+  main {
+    background: #ffffff !important;
+    padding: 0 !important;
+  }
+
+  section {
+    min-height: auto !important;
+    padding: 20px 0 !important;
+    page-break-inside: avoid;
+  }
+
+  /* Typography reset */
+  h1, h2, h3, h4, .text-gradient-primary, .text-gradient-cyan, .shimmer-text {
+    background: none !important;
+    -webkit-text-fill-color: #000000 !important;
+    color: #000000 !important;
+    text-shadow: none !important;
+    animation: none !important;
+  }
+
+  .text-gray-400, .text-gray-500, .text-gray-600 {
+    color: #333333 !important;
+  }
+
+  /* Profile Image Handling */
+  .lg\:flex {
+    display: block !important;
+  }
+
+  .glass {
+    background: #ffffff !important;
+    border: 1px solid #eeeeee !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  .glow-primary, .glow-accent {
+    box-shadow: none !important;
+  }
+
+  /* Skills & Experience */
+  .skill-bar-fill {
+    background: #000000 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .timeline-line {
+    background: #000000 !important;
+    width: 2px !important;
+  }
+
+  /* Ensure Hero looks like a header */
+  .pt-24 {
+    padding-top: 0 !important;
+  }
+
+  /* Force links to show URL if needed (optional, but good for resume) */
+  /* a:after { content: " (" attr(href) ")"; } */
 }

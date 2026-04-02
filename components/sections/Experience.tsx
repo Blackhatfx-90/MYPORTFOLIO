@@ -17,7 +17,7 @@ const experiences = [
   {
     year: "2024 — Present",
     role: "Senior Frontend Engineer",
-    company: "TechCorp Inc.",
+    company: "Freelance Client (Under NDA)",
     description: "Spearheading the UI/UX architecture for enterprise scalable web applications. Mastered state management, performance optimization, and Next.js server-side features.",
     tags: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     icon: <Code2 className="w-5 h-5" />,
@@ -26,7 +26,7 @@ const experiences = [
   {
     year: "2021 — 2024",
     role: "Full Stack Developer",
-    company: "StartUp Lab",
+    company: "Early-Stage SaaS Startup (Confidential)",
     description: "Designed and engineered entire SaaS platforms from absolute zero to MRR. Configured secure authentication pipelines and scalable PostgreSQL databases.",
     tags: ["Node.js", "Express", "Supabase", "PostgreSQL"],
     icon: <Database className="w-5 h-5" />,

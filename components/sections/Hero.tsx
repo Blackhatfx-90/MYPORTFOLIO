@@ -5,17 +5,15 @@ import { motion } from "framer-motion";
 import { ArrowRight, Github, Linkedin, Twitter, ChevronDown } from "lucide-react";
 
 const roles = [
-  "Full Stack Developer",
+  "Full Stack Engineer",
   "AI Integrator",
-  "Software Engineer",
-  "Next.js Expert",
-  "UI/UX Enthusiast",
+  "Next.js Specialist",
 ];
 
 const stats = [
-  { value: "3+", label: "Years Experience" },
-  { value: "15+", label: "Projects Built" },
-  { value: "5+", label: "AI Tools Shipped" },
+  { value: "3+", label: "Years Experience", subtitle: "$500K+ Volume Backtested" },
+  { value: "15+", label: "Projects Built", subtitle: "Across 8+ Industries" },
+  { value: "5+", label: "AI Tools Shipped", subtitle: "Used by 200+ Users" },
 ];
 
 export default function Hero() {
@@ -161,7 +159,7 @@ export default function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
               </span>
-              Available for new projects
+              ✦ Available — IST / EST / GMT
             </div>
           </motion.div>
 
@@ -310,11 +308,12 @@ export default function Hero() {
         transition={{ delay: 1, duration: 0.7 }}
         className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-12 mt-16"
       >
-        <div className="grid grid-cols-3 gap-4 max-w-md">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl">
           {stats.map((stat, i) => (
-            <div key={i} className="glass rounded-2xl p-4 text-center">
-              <div className="text-2xl font-black text-gradient-primary">{stat.value}</div>
-              <div className="text-xs text-gray-500 mt-1 font-medium">{stat.label}</div>
+            <div key={i} className="glass rounded-2xl p-6 text-center border border-white/5 hover:border-primary/20 transition-colors">
+              <div className="text-3xl font-black text-gradient-primary">{stat.value}</div>
+              <div className="text-xs text-gray-400 mt-1 font-bold uppercase tracking-wider">{stat.label}</div>
+              <div className="text-[10px] text-primary/60 mt-2 font-mono">{stat.subtitle}</div>
             </div>
           ))}
         </div>

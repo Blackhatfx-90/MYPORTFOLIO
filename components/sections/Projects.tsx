@@ -119,15 +119,31 @@ export default function Projects() {
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mt-auto">
+                <div className="flex flex-wrap gap-2 mt-auto mb-6">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-white/20 transition-colors font-mono"
+                      className="text-[10px] px-2 py-1 rounded-md bg-white/5 border border-white/10 font-mono text-gray-400"
                     >
                       {tag}
                     </span>
                   ))}
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                  <a 
+                    href={project.links.demo} 
+                    className="flex-1 py-2 px-4 rounded-xl border border-white/10 text-xs font-bold text-center hover:bg-white hover:text-black transition-all duration-300"
+                  >
+                    Live Demo →
+                  </a>
+                  <a 
+                    href={project.links.code} 
+                    className="flex-1 py-2 px-4 rounded-xl border border-white/10 text-xs font-bold text-center hover:border-primary/50 hover:text-primary transition-all duration-300"
+                  >
+                    GitHub →
+                  </a>
                 </div>
               </div>
             </motion.div>

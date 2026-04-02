@@ -96,13 +96,13 @@ export default function Header() {
 
             {/* Resume Button */}
             <div className="hidden md:flex items-center gap-3">
-              <a
-                href="#contact"
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary/10 border border-primary/30 text-primary text-sm font-semibold hover:bg-primary hover:text-black transition-all duration-300"
+              <button
+                onClick={() => typeof window !== "undefined" && window.print()}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary/10 border border-primary/30 text-primary text-sm font-semibold hover:bg-primary hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(0,240,255,0.1)] cursor-pointer"
               >
                 <Download className="w-3.5 h-3.5" />
                 Resume
-              </a>
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -144,6 +144,25 @@ export default function Header() {
                   </Link>
                 </motion.div>
               ))}
+
+              {/* Mobile Resume Button */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navItems.length * 0.06 }}
+                className="pt-4 mt-2 border-t border-white/10"
+              >
+                <button
+                  onClick={() => {
+                    setMobileOpen(false);
+                    setTimeout(() => window.print(), 300);
+                  }}
+                  className="flex items-center justify-center gap-2 w-full px-4 py-4 rounded-xl bg-primary/10 border border-primary/30 text-primary text-sm font-bold active:scale-95 transition-all"
+                >
+                  <Download className="w-4 h-4" />
+                  Print Resume
+                </button>
+              </motion.div>
             </nav>
           </motion.div>
         )}

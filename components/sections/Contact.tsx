@@ -55,8 +55,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-widest font-mono mb-1">Email</p>
-                  <a href="mailto:priyanshushukla.up26@gmail.com" className="text-lg font-bold hover:text-primary transition-colors">
-                    priyanshushukla.up26@gmail.com
+                  <a href="mailto:hello@aiwebify.site" className="text-lg font-bold hover:text-primary transition-colors">
+                    hello@aiwebify.site
                   </a>
                 </div>
               </div>
@@ -140,7 +140,7 @@ export default function Contact() {
                       <span className="flex items-center gap-2">Sending <span className="animate-spin w-4 h-4 border-2 border-black border-t-transparent rounded-full" /></span>
                     ) : (
                       <span className="flex items-center gap-2">
-                        Initialize Protocol <Sparkles className="w-4 h-4" />
+                        Start a Project <Sparkles className="w-4 h-4" />
                       </span>
                     )}
                   </button>
