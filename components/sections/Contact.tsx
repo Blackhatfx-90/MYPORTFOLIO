@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { MapPin, Mail, Sparkles, CheckCircle2 } from "lucide-react";
+import { MapPin, Mail, Sparkles, CheckCircle2, MessageCircle } from "lucide-react";
 
 const springConfig = { stiffness: 80, damping: 25, restDelta: 0.001 };
 
@@ -70,8 +70,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-[11px] text-[#777777] uppercase tracking-[0.15em] font-mono mb-1">Email</p>
-                  <a href="mailto:hello@aiwebify.site" className="text-[15px] font-semibold text-[#ededed] hover:text-[#ffffff] transition-colors duration-300">
-                    hello@aiwebify.site
+                  <a href="mailto:godfathersid3@gmail.com" className="text-[15px] font-semibold text-[#ededed] hover:text-[#ffffff] transition-colors duration-300">
+                    godfathersid3@gmail.com
                   </a>
                 </div>
               </motion.div>
@@ -152,21 +152,35 @@ export default function Contact() {
                     Message received. I will be in touch!
                   </motion.div>
                 ) : (
-                  <motion.button 
-                    disabled={isSubmitting}
-                    type="submit"
-                    whileHover={{ scale: 1.01, transition: { duration: 0.25 } }}
-                    whileTap={{ scale: 0.99 }}
-                    className="w-full bg-[#ffffff] text-[#000000] py-4 text-[14px] font-semibold tracking-wide flex items-center justify-center gap-2 rounded-[10px] hover:bg-[#e0e0e0] disabled:opacity-50 transition-colors duration-300"
-                  >
-                    {isSubmitting ? (
-                      <span className="flex items-center gap-2">Sending <span className="animate-spin w-[14px] h-[14px] border-[2px] border-black border-t-transparent rounded-full" /></span>
-                    ) : (
-                      <span className="flex items-center gap-2">
-                        Send Message <Sparkles className="w-4 h-4 text-[#111111]" />
-                      </span>
-                    )}
-                  </motion.button>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <motion.button 
+                      disabled={isSubmitting}
+                      type="submit"
+                      whileHover={{ scale: 1.01, transition: { duration: 0.25 } }}
+                      whileTap={{ scale: 0.99 }}
+                      className="flex-1 bg-[#ffffff] text-[#000000] py-4 text-[14px] font-semibold tracking-wide flex items-center justify-center gap-2 rounded-[10px] hover:bg-[#e0e0e0] disabled:opacity-50 transition-colors duration-300"
+                    >
+                      {isSubmitting ? (
+                        <span className="flex items-center gap-2">Sending <span className="animate-spin w-[14px] h-[14px] border-[2px] border-black border-t-transparent rounded-full" /></span>
+                      ) : (
+                        <span className="flex items-center gap-2">
+                          Send Message <Sparkles className="w-4 h-4 text-[#111111]" />
+                        </span>
+                      )}
+                    </motion.button>
+
+                    <motion.a 
+                      href="https://wa.me/919068839558"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.01, transition: { duration: 0.25 } }}
+                      whileTap={{ scale: 0.99 }}
+                      className="flex-1 bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/20 py-4 text-[14px] font-semibold tracking-wide flex items-center justify-center gap-2 rounded-[10px] hover:bg-[#25D366]/20 transition-colors duration-300"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                      WhatsApp Me
+                    </motion.a>
+                  </div>
                 )}
               </form>
             </div>
