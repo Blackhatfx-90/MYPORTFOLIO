@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, Variants } from "framer-motion";
 import { ArrowRight, Github, Linkedin, Twitter, ChevronDown } from "lucide-react";
 
 const roles = [
@@ -34,7 +34,7 @@ interface Particle {
 const smoothSpring = { stiffness: 100, damping: 30, restDelta: 0.001 };
 
 // Stagger container variants
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -45,7 +45,7 @@ const containerVariants = {
   },
 };
 
-const childVariants = {
+const childVariants: Variants = {
   hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
   visible: {
     opacity: 1,
