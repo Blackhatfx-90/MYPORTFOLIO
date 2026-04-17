@@ -35,11 +35,9 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative bg-black overflow-hidden border-t border-white/5" ref={sectionRef}>
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 blur-[150px] rounded-full opacity-30 pointer-events-none" />
+    <section id="contact" className="py-24 relative bg-transparent overflow-hidden border-t border-white/[0.05]" ref={sectionRef}>
 
-      <motion.div className="max-w-7xl mx-auto px-6 relative z-10" style={{ opacity, y }}>
+      <motion.div className="max-w-6xl mx-auto px-6 relative z-10" style={{ opacity, y }}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           
           {/* Left: Text & Info */}
@@ -50,13 +48,13 @@ export default function Contact() {
             transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="flex flex-col flex-1"
           >
-            <div className="section-badge mb-6 w-fit">// Initiate</div>
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-[1.05]" style={{ fontFamily: "var(--font-space)" }}>
+            <div className="section-badge mb-6 w-fit">Get in Touch</div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.1] text-[#fafafa] tracking-tight">
               Let&apos;s build<br />
-              <span className="text-gradient-primary">something legendary.</span>
+              <span className="text-[#a1a1aa]">something exceptional.</span>
             </h2>
-            <p className="text-muted-foreground text-lg mb-12 max-w-md leading-relaxed">
-              Got a vision that needs a world-class engineer? Drop your coordinates and let&apos;s architect the future together.
+            <p className="text-[#a1a1aa] text-lg mb-12 max-w-md leading-relaxed tracking-tight">
+              Got a vision that needs robust architecture? Drop your details and let&apos;s engineer the future together.
             </p>
 
             <div className="space-y-6">
@@ -65,14 +63,14 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{ delay: 0.1, duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="flex items-center gap-4 group"
+                className="flex items-center gap-5 group"
               >
-                <div className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-primary/50 group-hover:bg-primary/10 transition-all duration-400">
-                  <Mail className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors duration-400" />
+                <div className="w-12 h-12 rounded-[12px] bg-white/[0.03] border border-white/[0.08] flex items-center justify-center group-hover:border-white/[0.2] transition-colors duration-400">
+                  <Mail className="w-5 h-5 text-[#888888] group-hover:text-[#ffffff] transition-colors duration-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-widest font-mono mb-1">Email</p>
-                  <a href="mailto:hello@aiwebify.site" className="text-lg font-bold hover:text-primary transition-colors duration-300">
+                  <p className="text-[11px] text-[#777777] uppercase tracking-[0.15em] font-mono mb-1">Email</p>
+                  <a href="mailto:hello@aiwebify.site" className="text-[15px] font-semibold text-[#ededed] hover:text-[#ffffff] transition-colors duration-300">
                     hello@aiwebify.site
                   </a>
                 </div>
@@ -83,14 +81,14 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{ delay: 0.2, duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="flex items-center gap-4 group"
+                className="flex items-center gap-5 group"
               >
-                <div className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-primary/50 group-hover:bg-primary/10 transition-all duration-400">
-                  <MapPin className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors duration-400" />
+                <div className="w-12 h-12 rounded-[12px] bg-white/[0.03] border border-white/[0.08] flex items-center justify-center group-hover:border-white/[0.2] transition-colors duration-400">
+                  <MapPin className="w-5 h-5 text-[#888888] group-hover:text-[#ffffff] transition-colors duration-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-widest font-mono mb-1">Location</p>
-                  <p className="text-lg font-bold">India 🇮🇳 (Remote Global)</p>
+                  <p className="text-[11px] text-[#777777] uppercase tracking-[0.15em] font-mono mb-1">Location</p>
+                  <p className="text-[15px] font-semibold text-[#ededed]">India 🇮🇳 (Remote Global)</p>
                 </div>
               </motion.div>
             </div>
@@ -103,45 +101,43 @@ export default function Contact() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <div className="relative glass rounded-[2rem] p-8 md:p-10 border border-white/10 overflow-hidden group">
-              {/* Form bg glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="relative glass rounded-[20px] p-8 md:p-10 border border-white/[0.05] overflow-hidden group bg-[#0A0A0A]">
               
               <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-xs font-mono tracking-widest text-gray-400 uppercase">Your Name</label>
+                  <div className="space-y-2.5">
+                    <label className="text-[11px] font-mono tracking-widest text-[#777777] uppercase">Your Name</label>
                     <input
                       required
                       type="text"
                       placeholder="John Doe"
                       value={formState.name}
                       onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                      className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-700 input-glow outline-none transition-all duration-300 focus:bg-black/60"
+                      className="w-full bg-[#111111] border border-white/[0.05] rounded-[10px] px-5 py-4 text-[#ffffff] placeholder:text-[#555555] text-[14px] outline-none transition-all duration-300 focus:border-white/[0.2] focus:bg-[#1a1a1a]"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-xs font-mono tracking-widest text-gray-400 uppercase">Your Email</label>
+                  <div className="space-y-2.5">
+                    <label className="text-[11px] font-mono tracking-widest text-[#777777] uppercase">Your Email</label>
                     <input
                       required
                       type="email"
                       placeholder="john@example.com"
                       value={formState.email}
                       onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                      className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-700 input-glow outline-none transition-all duration-300 focus:bg-black/60"
+                      className="w-full bg-[#111111] border border-white/[0.05] rounded-[10px] px-5 py-4 text-[#ffffff] placeholder:text-[#555555] text-[14px] outline-none transition-all duration-300 focus:border-white/[0.2] focus:bg-[#1a1a1a]"
                     />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-xs font-mono tracking-widest text-gray-400 uppercase">Project Details</label>
+                <div className="space-y-2.5">
+                  <label className="text-[11px] font-mono tracking-widest text-[#777777] uppercase">Project Details</label>
                   <textarea
                     required
                     rows={5}
-                    placeholder="Tell me about your tech stack, goals, and timeline..."
+                    placeholder="Tell me about your requirements, goals, and timeline..."
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-gray-700 input-glow outline-none transition-all duration-300 resize-none focus:bg-black/60"
+                    className="w-full bg-[#111111] border border-white/[0.05] rounded-[10px] px-5 py-4 text-[#ffffff] placeholder:text-[#555555] text-[14px] outline-none transition-all duration-300 resize-none focus:border-white/[0.2] focus:bg-[#1a1a1a]"
                   />
                 </div>
 
@@ -150,24 +146,24 @@ export default function Contact() {
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="w-full py-4 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 flex items-center justify-center gap-2 font-bold"
+                    className="w-full py-4 rounded-[10px] bg-green-500/[0.05] border border-green-500/[0.2] text-green-400 flex items-center justify-center gap-2 font-medium text-[14px]"
                   >
-                    <CheckCircle2 className="w-5 h-5" />
-                    Message received. I&apos;ll be in touch!
+                    <CheckCircle2 className="w-[18px] h-[18px]" />
+                    Message received. I will be in touch!
                   </motion.div>
                 ) : (
                   <motion.button 
                     disabled={isSubmitting}
                     type="submit"
-                    whileHover={{ scale: 1.02, transition: { duration: 0.25 } }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full btn-primary py-4 text-base tracking-wide flex items-center justify-center gap-2 rounded-xl border border-primary/20 hover:border-white shadow-[0_0_20px_rgba(0,240,255,0.2)] disabled:opacity-50 transition-all duration-300"
+                    whileHover={{ scale: 1.01, transition: { duration: 0.25 } }}
+                    whileTap={{ scale: 0.99 }}
+                    className="w-full bg-[#ffffff] text-[#000000] py-4 text-[14px] font-semibold tracking-wide flex items-center justify-center gap-2 rounded-[10px] hover:bg-[#e0e0e0] disabled:opacity-50 transition-colors duration-300"
                   >
                     {isSubmitting ? (
-                      <span className="flex items-center gap-2">Sending <span className="animate-spin w-4 h-4 border-2 border-black border-t-transparent rounded-full" /></span>
+                      <span className="flex items-center gap-2">Sending <span className="animate-spin w-[14px] h-[14px] border-[2px] border-black border-t-transparent rounded-full" /></span>
                     ) : (
                       <span className="flex items-center gap-2">
-                        Launch Mission <Sparkles className="w-4 h-4" />
+                        Send Message <Sparkles className="w-4 h-4 text-[#111111]" />
                       </span>
                     )}
                   </motion.button>

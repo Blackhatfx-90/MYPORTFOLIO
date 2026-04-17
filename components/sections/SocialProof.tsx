@@ -27,22 +27,19 @@ export default function SocialProof() {
   const y = useSpring(rawY, springConfig);
 
   return (
-    <section id="social-proof" className="py-24 relative bg-black overflow-hidden" ref={sectionRef}>
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
+    <section id="social-proof" className="py-24 relative bg-transparent overflow-hidden" ref={sectionRef}>
 
-      <motion.div className="max-w-7xl mx-auto px-6 relative z-10" style={{ opacity, y }}>
+      <motion.div className="max-w-6xl mx-auto px-6 relative z-10" style={{ opacity, y }}>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mb-16"
+          className="mb-16 flex flex-col items-center text-center"
         >
-          <div className="section-badge mb-4">// Reputation</div>
-          <h2 className="text-3xl md:text-5xl font-black mb-6" style={{ fontFamily: "var(--font-space)" }}>
+          <div className="section-badge mb-4">Reputation</div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#fafafa] tracking-tight">
             Trusted by <span className="text-gradient-primary">Visionaries</span>
           </h2>
         </motion.div>
@@ -54,26 +51,24 @@ export default function SocialProof() {
             whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.9, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            whileHover={{ scale: 1.02, transition: { duration: 0.4, ease: "easeOut" } }}
-            className="glass rounded-3xl p-8 md:p-10 border border-white/10 relative group"
+            whileHover={{ scale: 1.01, transition: { duration: 0.4, ease: "easeOut" } }}
+            className="glass rounded-[24px] p-8 md:p-10 border border-white/[0.06] relative group bg-[#0A0A0A] hover:border-white/[0.15] transition-colors duration-500"
           >
-            <div className="absolute top-6 right-8 text-primary/20 group-hover:text-primary/40 transition-colors duration-500">
+            <div className="absolute top-6 right-8 text-white/[0.05] group-hover:text-white/[0.1] transition-colors duration-500">
               <Quote className="w-12 h-12 fill-current" />
             </div>
             
-            <p className="text-xl md:text-2xl font-medium leading-relaxed mb-8 italic text-gray-200">
+            <p className="text-xl md:text-2xl font-medium leading-relaxed mb-8 text-[#fafafa] tracking-tight">
               &quot;Priyanshu operates on another level. Delivered our entire platform ahead of schedule with impeccable code quality.&quot;
             </p>
 
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-primary to-accent p-[1px]">
-                <div className="w-full h-full rounded-full bg-black flex items-center justify-center font-bold text-primary">
-                  AM
-                </div>
+              <div className="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center font-bold text-[#fafafa]">
+                AM
               </div>
               <div>
-                <h4 className="font-bold text-white">Alex M.</h4>
-                <p className="text-sm text-gray-500 font-mono">Founder — US SaaS Startup</p>
+                <h4 className="font-bold text-[#ededed]">Alex M.</h4>
+                <p className="text-[12px] text-[#777777] font-mono tracking-tight">Founder — US SaaS Startup</p>
               </div>
             </div>
           </motion.div>
@@ -86,11 +81,11 @@ export default function SocialProof() {
             transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="flex flex-col gap-8"
           >
-            <p className="text-gray-400 max-w-sm">
+            <p className="text-[#a1a1aa] max-w-sm text-lg leading-relaxed">
               Harnessing elite-tier technologies to build intelligent, scalable, and future-proof digital systems.
             </p>
             
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {techBadges.map((tech, i) => (
                 <motion.div
                   key={tech}
@@ -98,8 +93,8 @@ export default function SocialProof() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "-30px" }}
                   transition={{ delay: 0.2 + i * 0.08, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  whileHover={{ scale: 1.08, y: -3, transition: { duration: 0.25, ease: "easeOut" } }}
-                  className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-gray-300 font-bold hover:border-primary/50 hover:bg-primary/5 hover:text-primary transition-all duration-300 cursor-default"
+                  whileHover={{ scale: 1.05, y: -2, transition: { duration: 0.25, ease: "easeOut" } }}
+                  className="px-5 py-2.5 rounded-[12px] bg-white/[0.03] border border-white/[0.08] text-[#c4c4c4] font-medium hover:border-white/20 hover:text-white transition-all duration-300 cursor-default"
                 >
                   {tech}
                 </motion.div>

@@ -11,8 +11,7 @@ const experiences = [
     company: "Self-Employed / Global Clients",
     description: "Architecting and deploying complex, high-performance systems for international clients. Building scalable backends and cinematic modern interfaces from the ground up.",
     tags: ["React", "Node.js", "System Design", "AWS"],
-    icon: <Activity className="w-5 h-5" />,
-    color: "highlight",
+    icon: <Activity className="w-4 h-4" />,
   },
   {
     year: "2024 — Present",
@@ -20,17 +19,15 @@ const experiences = [
     company: "Enterprise Client (Under NDA)",
     description: "Spearheading the UI architecture for enterprise-scale web platforms. Mastering performance optimization, state management, and Next.js edge capabilities.",
     tags: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-    icon: <Code2 className="w-5 h-5" />,
-    color: "primary",
+    icon: <Code2 className="w-4 h-4" />,
   },
   {
     year: "2021 — 2024",
     role: "Full Stack Engineer",
-    company: "Early-Stage SaaS Startup (Stealth)",
+    company: "Early-Stage SaaS Startup",
     description: "Designed and shipped entire SaaS platforms from zero to revenue. Engineered secure auth pipelines and high-performance PostgreSQL architectures.",
     tags: ["Node.js", "Express", "Supabase", "PostgreSQL"],
-    icon: <Database className="w-5 h-5" />,
-    color: "accent",
+    icon: <Database className="w-4 h-4" />,
   },
 ];
 
@@ -49,10 +46,9 @@ export default function Experience() {
   const y = useSpring(rawY, springConfig);
 
   return (
-    <section id="experience" className="py-24 relative bg-black" ref={sectionRef}>
-      {/* Background gradients */}
-      <div className="absolute top-0 right-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent opacity-30 pointer-events-none" />
+    <section id="experience" className="py-24 relative bg-transparent" ref={sectionRef}>
+      {/* Background border top */}
+      <div className="absolute top-0 right-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/[0.05] to-transparent" />
 
       <motion.div className="max-w-4xl mx-auto px-6" style={{ opacity, y }}>
         {/* Header */}
@@ -61,7 +57,7 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mb-20 text-center"
+          className="mb-20 text-center flex flex-col items-center"
         >
           <div className="flex justify-center mb-6">
             <motion.div
@@ -69,15 +65,15 @@ export default function Experience() {
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="p-4 rounded-2xl bg-white/5 border border-white/10 shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+              className="p-3 rounded-full bg-white/[0.02] border border-white/[0.08]"
             >
-              <Briefcase className="w-8 h-8 text-primary" />
+              <Briefcase className="w-6 h-6 text-[#ededed]" />
             </motion.div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-6" style={{ fontFamily: "var(--font-space)" }}>
-            Evolution <span className="text-gradient-cyan">Log</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#fafafa] tracking-tight">
+            Professional <span className="text-gradient-primary">Timeline</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+          <p className="text-[#a1a1aa] max-w-xl mx-auto text-lg leading-relaxed">
             A chronicle of engineering scalable platforms and intelligent systems across the digital frontier.
           </p>
         </motion.div>
@@ -85,7 +81,7 @@ export default function Experience() {
         {/* Timeline */}
         <div className="relative">
           {/* Main vertical line */}
-          <div className="absolute left-[24px] md:left-1/2 top-4 bottom-4 w-[2px] -translate-x-1/2 bg-gradient-to-b from-primary via-accent to-transparent opacity-80" />
+          <div className="absolute left-[24px] md:left-1/2 top-4 bottom-4 w-[1px] -translate-x-1/2 bg-gradient-to-b from-[#333333] via-[#444444] to-transparent" />
 
           <div className="space-y-12">
             {experiences.map((exp, index) => {
@@ -109,16 +105,9 @@ export default function Experience() {
                       whileInView={{ scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.12 + 0.2, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                      className="w-10 h-10 rounded-full flex items-center justify-center border-4 border-black"
-                      style={{ 
-                        background: `rgba(0,0,0,0.8)`,
-                        boxShadow: `0 0 20px var(--${exp.color})` 
-                      }}
+                      className="w-10 h-10 rounded-full flex items-center justify-center border-[4px] border-[#0A0A0A] bg-[#1a1a1a]"
                     >
-                      <div 
-                        className="w-full h-full rounded-full flex items-center justify-center border border-white/20"
-                        style={{ color: `var(--${exp.color})` }}
-                      >
+                      <div className="w-full h-full rounded-full flex items-center justify-center border border-white/10 text-[#ededed]">
                         {exp.icon}
                       </div>
                     </motion.div>
@@ -131,28 +120,22 @@ export default function Experience() {
                   <div className={`w-full md:w-[45%] pl-16 md:pl-0 ${isEven ? "md:text-right" : "md:text-left"}`}>
                     <motion.div
                       whileHover={{ y: -4, transition: { duration: 0.35, ease: "easeOut" } }}
-                      className="glass rounded-3xl p-8 relative group overflow-hidden border border-white/5 hover:border-white/15 transition-colors duration-500"
+                      className="glass rounded-[20px] p-8 relative group overflow-hidden border border-white/[0.04] hover:border-white/[0.1] transition-colors duration-500 bg-[#0A0A0A]"
                     >
                       
-                      {/* Glow effect on hover */}
-                      <div 
-                        className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 blur-2xl pointer-events-none"
-                        style={{ background: `var(--${exp.color})` }}
-                      />
-
-                      <div className={`text-xs font-mono font-bold tracking-widest mb-3 uppercase flex items-center gap-2 ${isEven ? "md:justify-end" : ""}`}>
-                        <span style={{ color: `var(--${exp.color})` }}>{exp.year}</span>
+                      <div className={`text-[11px] font-mono font-medium tracking-widest mb-4 uppercase flex items-center gap-2 ${isEven ? "md:justify-end" : ""}`}>
+                        <span className="text-[#a1a1aa]">{exp.year}</span>
                       </div>
                       
-                      <h3 className="text-xl font-bold text-white mb-2 leading-tight">
+                      <h3 className="text-[18px] font-semibold text-[#ededed] mb-1.5 leading-tight tracking-tight">
                         {exp.role}
                       </h3>
                       
-                      <div className="text-sm font-medium text-gray-500 mb-6 font-mono">
+                      <div className="text-[13px] font-medium text-[#777777] mb-6 font-mono tracking-tight">
                         {exp.company}
                       </div>
                       
-                      <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                      <p className="text-[#888888] text-[14px] leading-relaxed mb-6">
                         {exp.description}
                       </p>
 
@@ -160,7 +143,7 @@ export default function Experience() {
                         {exp.tags.map(tag => (
                           <span 
                             key={tag}
-                            className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gray-300 font-medium"
+                            className="px-2.5 py-1 rounded-[6px] bg-white/[0.02] border border-white/[0.05] text-[11px] text-[#777777] font-mono group-hover:text-[#a1a1aa] transition-colors duration-300"
                           >
                             {tag}
                           </span>
