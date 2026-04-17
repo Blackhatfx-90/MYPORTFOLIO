@@ -25,31 +25,32 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Priyanshu Shukla | Full Stack Developer & AI Engineer",
+  title: "Priyanshu Shukla | Full Stack Architect & AI Engineer",
   description:
-    "Full Stack Engineer & AI Integrator. Building next-gen digital experiences with React, Next.js, Node.js, TypeScript & intelligent automation.",
+    "Full Stack Architect & AI Systems Engineer. Crafting next-gen digital experiences with React, Next.js, Node.js, TypeScript & intelligent automation.",
   keywords: [
-    "Full Stack Developer",
+    "Full Stack Architect",
     "Priyanshu Shukla",
     "Next.js",
     "React",
     "TypeScript",
     "AI Engineer",
-    "AI Developer",
+    "AI Systems",
     "Portfolio",
+    "Digital Experience",
   ],
   authors: [{ name: "Priyanshu Shukla" }],
   creator: "Priyanshu Shukla",
   openGraph: {
-    title: "Priyanshu Shukla | Full Stack Developer & AI Engineer",
+    title: "Priyanshu Shukla | Full Stack Architect & AI Engineer",
     description:
-      "Building ultra-modern digital experiences that define the next generation of the web.",
+      "Crafting the digital future — engineering cinematic web experiences powered by AI.",
     type: "website",
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Priyanshu Shukla — Developer & AI Engineer",
+    title: "Priyanshu Shukla — Architect & AI Engineer",
     creator: "@TheeeRakeee",
   },
 };

@@ -1,67 +1,84 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Briefcase, Activity, Code2, Database } from "lucide-react";
 
 const experiences = [
   {
     year: "2023 — Present",
-    role: "Freelance Software Engineer",
-    company: "Self-Employed / Independent",
-    description: "Architected and deployed complex, high-performance web applications for international clients. Built scalable backend systems and responsive modern interfaces.",
+    role: "Independent Software Architect",
+    company: "Self-Employed / Global Clients",
+    description: "Architecting and deploying complex, high-performance systems for international clients. Building scalable backends and cinematic modern interfaces from the ground up.",
     tags: ["React", "Node.js", "System Design", "AWS"],
     icon: <Activity className="w-5 h-5" />,
     color: "highlight",
   },
   {
     year: "2024 — Present",
-    role: "Senior Frontend Engineer",
-    company: "Freelance Client (Under NDA)",
-    description: "Spearheading the UI/UX architecture for enterprise scalable web applications. Mastered state management, performance optimization, and Next.js server-side features.",
+    role: "Lead Frontend Architect",
+    company: "Enterprise Client (Under NDA)",
+    description: "Spearheading the UI architecture for enterprise-scale web platforms. Mastering performance optimization, state management, and Next.js edge capabilities.",
     tags: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     icon: <Code2 className="w-5 h-5" />,
     color: "primary",
   },
   {
     year: "2021 — 2024",
-    role: "Full Stack Developer",
-    company: "Early-Stage SaaS Startup (Confidential)",
-    description: "Designed and engineered entire SaaS platforms from absolute zero to MRR. Configured secure authentication pipelines and scalable PostgreSQL databases.",
+    role: "Full Stack Engineer",
+    company: "Early-Stage SaaS Startup (Stealth)",
+    description: "Designed and shipped entire SaaS platforms from zero to revenue. Engineered secure auth pipelines and high-performance PostgreSQL architectures.",
     tags: ["Node.js", "Express", "Supabase", "PostgreSQL"],
     icon: <Database className="w-5 h-5" />,
     color: "accent",
   },
 ];
 
+const springConfig = { stiffness: 80, damping: 25, restDelta: 0.001 };
+
 export default function Experience() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const rawOpacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
+  const rawY = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [50, 0, 0, -25]);
+  const opacity = useSpring(rawOpacity, springConfig);
+  const y = useSpring(rawY, springConfig);
 
   return (
-    <section id="experience" className="py-24 relative bg-black">
+    <section id="experience" className="py-24 relative bg-black" ref={sectionRef}>
       {/* Background gradients */}
       <div className="absolute top-0 right-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent opacity-30 pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-6" ref={ref}>
+      <motion.div className="max-w-4xl mx-auto px-6" style={{ opacity, y }}>
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="mb-20 text-center"
         >
           <div className="flex justify-center mb-6">
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="p-4 rounded-2xl bg-white/5 border border-white/10 shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+            >
               <Briefcase className="w-8 h-8 text-primary" />
-            </div>
+            </motion.div>
           </div>
           <h2 className="text-4xl md:text-5xl font-black mb-6" style={{ fontFamily: "var(--font-space)" }}>
-            Professional <span className="text-gradient-cyan">Journey</span>
+            Evolution <span className="text-gradient-cyan">Log</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-            A track record of engineering scalable platforms and intelligent software solutions.
+            A chronicle of engineering scalable platforms and intelligent systems across the digital frontier.
           </p>
         </motion.div>
 
@@ -77,16 +94,21 @@ export default function Experience() {
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: index * 0.2, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  initial={{ opacity: 0, y: 50, filter: "blur(6px)" }}
+                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ delay: index * 0.12, duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
                   className={`relative flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 ${
                     isEven ? "md:flex-row-reverse" : ""
                   }`}
                 >
                   {/* Timeline dot */}
                   <div className="absolute left-[24px] md:left-1/2 top-6 -translate-x-1/2 -translate-y-1/2 z-10">
-                    <div 
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.12 + 0.2, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                       className="w-10 h-10 rounded-full flex items-center justify-center border-4 border-black"
                       style={{ 
                         background: `rgba(0,0,0,0.8)`,
@@ -99,7 +121,7 @@ export default function Experience() {
                       >
                         {exp.icon}
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
 
                   {/* Empty space for alternating layout */}
@@ -107,11 +129,14 @@ export default function Experience() {
 
                   {/* Content card */}
                   <div className={`w-full md:w-[45%] pl-16 md:pl-0 ${isEven ? "md:text-right" : "md:text-left"}`}>
-                    <div className="glass glass-hover rounded-3xl p-8 relative group overflow-hidden border border-white/5">
+                    <motion.div
+                      whileHover={{ y: -4, transition: { duration: 0.35, ease: "easeOut" } }}
+                      className="glass rounded-3xl p-8 relative group overflow-hidden border border-white/5 hover:border-white/15 transition-colors duration-500"
+                    >
                       
                       {/* Glow effect on hover */}
                       <div 
-                        className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-2xl pointer-events-none"
+                        className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 blur-2xl pointer-events-none"
                         style={{ background: `var(--${exp.color})` }}
                       />
 
@@ -141,14 +166,14 @@ export default function Experience() {
                           </span>
                         ))}
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                 </motion.div>
               );
             })}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

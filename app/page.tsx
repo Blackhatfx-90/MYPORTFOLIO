@@ -1,5 +1,6 @@
 import Header from "@/components/layout/Header";
 import Hero from "@/components/sections/Hero";
+import CyberAnimation from "@/components/sections/CyberAnimation";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
@@ -11,6 +12,7 @@ import Footer from "@/components/layout/Footer";
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-black text-white selection:bg-primary selection:text-black">
+      <CyberAnimation />
       <Header />
       <Hero />
       <About />

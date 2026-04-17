@@ -1,23 +1,23 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ExternalLink, Github, Code } from "lucide-react";
 
 const projects = [
   {
     title: "Enterprise SaaS Platform",
-    category: "FULL STACK WEB",
-    description: "Scalable B2B multi-tenant architecture with real-time collaboration, role-based access control, and seamless integrations.",
+    category: "FULL STACK ARCHITECTURE",
+    description: "Multi-tenant B2B system with real-time collaboration, role-based access, and seamless third-party integrations — engineered for scale.",
     tags: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
-    image: "/project-1.png", // Use fallback since it doesn't exist
+    image: "/project-1.png",
     links: { demo: "#", code: "#" },
     color: "primary",
   },
   {
     title: "BHARAT.AI DEV",
     category: "AI ENGINEERING",
-    description: "An AI entity that behaves like a senior software engineer. A next-gen agentic coding assistant built to autonomously solve large-scale complex development tasks.",
+    description: "An autonomous AI entity that operates like a senior engineer — solving complex development tasks end-to-end with zero human intervention.",
     tags: ["React", "Custom LLM Agents", "Tailwind CSS", "Vite"],
     image: "/bharat-ai.jpg",
     links: { demo: "https://bharat-dev-ai.vercel.app/", code: "#" },
@@ -25,37 +25,48 @@ const projects = [
   },
   {
     title: "FinTech Dashboard",
-    category: "WEB DEVELOPMENT",
-    description: "High-performance financial analytics platform with live data socket streams and interactive framer-motion micro-animations.",
+    category: "CINEMATIC UI",
+    description: "High-performance financial analytics interface with live WebSocket streams and cinematic Framer Motion micro-interactions.",
     tags: ["Next.js", "WebSockets", "Framer Motion", "Tailwind"],
-    image: "/project-3.png", // Use fallback
+    image: "/project-3.png",
     links: { demo: "#", code: "#" },
     color: "highlight",
   },
 ];
 
+const springConfig = { stiffness: 80, damping: 25, restDelta: 0.001 };
+
 export default function Projects() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const rawOpacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
+  const rawY = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [50, 0, 0, -25]);
+  const opacity = useSpring(rawOpacity, springConfig);
+  const y = useSpring(rawY, springConfig);
 
   return (
-    <section id="projects" className="py-24 relative bg-black">
-      <div className="max-w-7xl mx-auto px-6" ref={ref}>
+    <section id="projects" className="py-24 relative bg-black" ref={sectionRef}>
+      <motion.div className="max-w-7xl mx-auto px-6" style={{ opacity, y }}>
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="mb-16 md:mb-24"
         >
           <div className="flex items-center gap-4 mb-6">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black" style={{ fontFamily: "var(--font-space)" }}>
-              Selected <span className="text-gradient-primary">Works</span>
+              Digital <span className="text-gradient-primary">Creations</span>
             </h2>
             <div className="h-[2px] w-32 bg-gradient-to-r from-primary to-transparent hidden md:block" />
           </div>
           <p className="text-muted-foreground text-lg max-w-xl">
-            A curated collection of digital experiences where engineering excellence meets top-tier aesthetic design.
+            A curated selection of systems and interfaces where engineering excellence meets cinematic design.
           </p>
         </motion.div>
 
@@ -64,10 +75,12 @@ export default function Projects() {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative rounded-[2rem] border border-white/10 bg-white/5 overflow-hidden glass-hover hover:border-primary/40 flex flex-col h-full"
+              initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ delay: index * 0.15, duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
+              whileHover={{ y: -8, transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] } }}
+              className="group relative rounded-[2rem] border border-white/10 bg-white/5 overflow-hidden hover:border-primary/40 flex flex-col h-full transition-colors duration-500"
             >
               {/* Thumbnail Area */}
               <div className="relative aspect-[4/3] w-full bg-gray-900 overflow-hidden">
@@ -75,7 +88,7 @@ export default function Projects() {
                 
                 {/* Fallback pattern */}
                 <div className="absolute inset-0 opacity-20 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-0 transition-opacity">
+                <div className="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-0 transition-opacity duration-500">
                   <Code className="w-16 h-16" />
                 </div>
 
@@ -84,15 +97,15 @@ export default function Projects() {
                   src={project.image} 
                   alt={project.title} 
                   onError={(e) => (e.currentTarget.style.display = 'none')}
-                  className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 z-0"
+                  className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out z-0"
                 />
 
                 {/* Tags on hover */}
-                <div className="absolute inset-0 z-20 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <a href={project.links.demo} className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.4)]">
+                <div className="absolute inset-0 z-20 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <a href={project.links.demo} className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-[0_0_20px_rgba(255,255,255,0.4)]">
                     <ExternalLink className="w-5 h-5 ml-0.5 mb-0.5" />
                   </a>
-                  <a href={project.links.code} className="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-white backdrop-blur-md flex items-center justify-center hover:bg-white/10 hover:scale-110 transition-transform">
+                  <a href={project.links.code} className="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-white backdrop-blur-md flex items-center justify-center hover:bg-white/10 hover:scale-110 transition-transform duration-300">
                     <Github className="w-5 h-5" />
                   </a>
                 </div>
@@ -107,11 +120,11 @@ export default function Projects() {
               <div className="p-8 flex flex-col flex-grow relative">
                 {/* Ambient glow */}
                 <div 
-                  className="absolute -top-10 -right-10 w-32 h-32 blur-[60px] opacity-0 group-hover:opacity-20 transition-opacity"
+                  className="absolute -top-10 -right-10 w-32 h-32 blur-[60px] opacity-0 group-hover:opacity-20 transition-opacity duration-700"
                   style={{ background: `var(--${project.color})` }}
                 />
 
-                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
                   {project.title}
                 </h3>
                 
@@ -149,7 +162,7 @@ export default function Projects() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

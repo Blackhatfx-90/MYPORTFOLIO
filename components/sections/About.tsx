@@ -1,65 +1,77 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Code2, Cpu, BarChart3, Zap, Globe, Users } from "lucide-react";
 
 const features = [
   {
     icon: <Code2 className="w-6 h-6" />,
-    title: "Full-Stack Engineer",
-    description: "Building scalable, production-grade apps with Next.js, TypeScript, Node.js, and modern cloud infrastructure.",
+    title: "Full-Stack Architect",
+    description: "Engineering production-grade systems with Next.js, TypeScript, Node.js, and modern cloud infrastructure at scale.",
     color: "primary",
     glow: "rgba(0,240,255,0.3)",
   },
   {
     icon: <Cpu className="w-6 h-6" />,
-    title: "AI Integrator",
-    description: "Embedding LLMs, intelligent agents, and ML pipelines into real-world products and workflows.",
+    title: "AI Systems Engineer",
+    description: "Building autonomous agents, integrating LLMs, and deploying intelligent pipelines that think and adapt.",
     color: "accent",
     glow: "rgba(112,0,255,0.3)",
   },
   {
     icon: <BarChart3 className="w-6 h-6" />,
-    title: "System Architect",
-    description: "Designing resilient backend architectures, optimizing databases, and ensuring high-availability systems.",
+    title: "Digital Craftsman",
+    description: "Designing resilient architectures with cinematic frontends — where engineering precision meets creative vision.",
     color: "highlight",
     glow: "rgba(0,255,157,0.3)",
   },
 ];
 
 const highlights = [
-  { icon: <Zap className="w-4 h-4 text-primary" />, text: "Performance-first development" },
-  { icon: <Globe className="w-4 h-4 text-accent" />, text: "Global remote collaboration" },
-  { icon: <Users className="w-4 h-4 text-highlight" />, text: "Client-centric approach" },
+  { icon: <Zap className="w-4 h-4 text-primary" />, text: "Zero-compromise performance" },
+  { icon: <Globe className="w-4 h-4 text-accent" />, text: "Global-scale collaboration" },
+  { icon: <Users className="w-4 h-4 text-highlight" />, text: "Mission-driven approach" },
 ];
 
+const springConfig = { stiffness: 80, damping: 25, restDelta: 0.001 };
+
 export default function About() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Spring-smoothed transforms eliminate jerkiness 
+  const rawOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const rawY = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [60, 0, 0, -30]);
+  const opacity = useSpring(rawOpacity, springConfig);
+  const y = useSpring(rawY, springConfig);
 
   return (
-    <section id="about" className="py-28 relative bg-black overflow-hidden">
+    <section id="about" className="py-28 relative bg-black overflow-hidden" ref={sectionRef}>
       {/* Bg decorations */}
       <div className="absolute inset-0 dot-grid opacity-30 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,black,transparent)]" />
       <div className="orb w-[500px] h-[500px] bg-primary/5 top-0 left-[-20%]" />
 
-      <div className="max-w-7xl mx-auto px-6" ref={ref}>
+      <motion.div className="max-w-7xl mx-auto px-6" style={{ opacity, y }}>
 
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-20 max-w-2xl"
+          initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          <div className="section-badge mb-6">// About Me</div>
+          <div className="section-badge mb-6">// Who I Am</div>
           <h2 className="text-4xl md:text-5xl xl:text-6xl font-black tracking-tight leading-[1.1] mb-6" style={{ fontFamily: "var(--font-space)" }}>
-            Beyond the{" "}
-            <span className="text-gradient-primary">Code</span>
+            The Mind Behind{" "}
+            <span className="text-gradient-primary">the Avatar</span>
           </h2>
           <p className="text-lg text-gray-400 leading-relaxed">
-            I&apos;m a self-driven developer who thrives at the intersection of complex engineering and beautiful design. Every project I build is crafted with obsessive attention to detail — because great software deserves great aesthetics.
+            I live at the intersection of cutting-edge engineering and bold creative design. Every system I architect, every interface I craft — it&apos;s built with obsessive precision and a relentless drive to push what&apos;s possible on the web.
           </p>
         </motion.div>
 
@@ -69,9 +81,11 @@ export default function About() {
             {features.map((feature, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -40 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0, x: -30, filter: "blur(4px)" }}
+                whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.7, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                whileHover={{ x: 6, transition: { duration: 0.3, ease: "easeOut" } }}
                 className="glass glass-hover rounded-2xl p-6 flex items-start gap-5 card-shine group"
               >
                 <div
@@ -85,7 +99,7 @@ export default function About() {
                   {feature.icon}
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors duration-300">
                     {feature.title}
                   </h3>
                   <p className="text-sm text-gray-400 leading-relaxed">{feature.description}</p>
@@ -95,14 +109,15 @@ export default function About() {
           </div>
 
           {/* Right: Info Panel */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             {/* Code block aesthetic */}
-            <div className="glass rounded-2xl p-6 font-mono text-sm border border-white/5">
+            <motion.div
+              initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="glass rounded-2xl p-6 font-mono text-sm border border-white/5"
+            >
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-3 h-3 rounded-full bg-red-500/80" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
@@ -110,24 +125,26 @@ export default function About() {
                 <span className="ml-2 text-xs text-gray-600">about.ts</span>
               </div>
               <div className="space-y-1.5 text-gray-300">
-                <div><span className="text-accent">const</span> <span className="text-primary">developer</span> = {"{"}</div>
-                <div className="pl-4"><span className="text-gray-500">name:</span> <span className="text-highlight">&quot;Priyanshu Shukla&quot;</span>,</div>
-                <div className="pl-4"><span className="text-gray-500">location:</span> <span className="text-highlight">&quot;India 🇮🇳&quot;</span>,</div>
-                <div className="pl-4"><span className="text-gray-500">role:</span> <span className="text-highlight">&quot;Full Stack + AI Engineer&quot;</span>,</div>
-                <div className="pl-4"><span className="text-gray-500">available:</span> <span className="text-green-400">true</span>,</div>
-                <div className="pl-4"><span className="text-gray-500">passion:</span> <span className="text-highlight">&quot;Building the future&quot;</span>,</div>
+                <div><span className="text-accent">const</span> <span className="text-primary">architect</span> = {"{"}</div>
+                <div className="pl-4"><span className="text-gray-500">identity:</span> <span className="text-highlight">&quot;Priyanshu Shukla&quot;</span>,</div>
+                <div className="pl-4"><span className="text-gray-500">base:</span> <span className="text-highlight">&quot;India 🇮🇳&quot;</span>,</div>
+                <div className="pl-4"><span className="text-gray-500">class:</span> <span className="text-highlight">&quot;Full Stack + AI Architect&quot;</span>,</div>
+                <div className="pl-4"><span className="text-gray-500">status:</span> <span className="text-green-400">&quot;online&quot;</span>,</div>
+                <div className="pl-4"><span className="text-gray-500">mission:</span> <span className="text-highlight">&quot;Shaping the digital frontier&quot;</span>,</div>
                 <div>{"}"}</div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Highlights */}
             <div className="space-y-3">
               {highlights.map((h, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.5 + i * 0.1 }}
+                  initial={{ opacity: 0, x: 20, filter: "blur(4px)" }}
+                  whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ delay: 0.2 + i * 0.08, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  whileHover={{ x: -4, transition: { duration: 0.25, ease: "easeOut" } }}
                   className="flex items-center gap-3 p-4 rounded-xl border border-white/5 bg-white/2"
                 >
                   <div className="p-2 rounded-lg bg-white/5">{h.icon}</div>
@@ -141,11 +158,11 @@ export default function About() {
               href="#contact"
               className="btn-primary flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-bold w-full"
             >
-              Work With Me →
+              Join My Mission →
             </a>
-          </motion.div>
+          </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
