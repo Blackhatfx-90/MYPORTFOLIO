@@ -339,23 +339,13 @@
     } catch (e) {}
   }
 
-  async function handleContactSubmit(e) {
-    const form = (e.target && e.target.closest) ? (e.target.closest('form') || (e.target.tagName === 'FORM' ? e.target : null)) : document.querySelector('form');
-    if (!form) return;
-
-    // Only process contact form with Name/Email
-    const nameInput = form.querySelector('input[name="Name"]');
-    const emailInput = form.querySelector('input[name="Email"]');
-    if (!nameInput && !emailInput) return;
-
-    if (e.preventDefault) e.preventDefault();
-    if (e.stopPropagation) e.stopPropagation();
-    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
-
-    if (form.__isSubmitting) return;
+  async function handleContactSubmit(form) {
+    if (!form || form.__isSubmitting) return;
 
     injectContactFormStyles();
 
+    const nameInput = form.querySelector('input[name="Name"]');
+    const emailInput = form.querySelector('input[name="Email"]');
     const name = nameInput ? nameInput.value.trim() : '';
     const email = emailInput ? emailInput.value.trim() : '';
     const details = form.querySelector('textarea[name="Details"]')?.value?.trim() || '';
@@ -364,12 +354,12 @@
     // Validation
     if (!name) {
       showContactStatus(form, '<strong style="color:#ff6b6b;">⚠️ Please enter your Full Name.</strong>', 'error');
-      nameInput.focus();
+      nameInput && nameInput.focus();
       return;
     }
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       showContactStatus(form, '<strong style="color:#ff6b6b;">⚠️ Please enter a valid Email address.</strong>', 'error');
-      emailInput.focus();
+      emailInput && emailInput.focus();
       return;
     }
 
@@ -530,27 +520,30 @@
     }
   }
 
-  // Intercept submit event with capture phase
-  document.addEventListener('submit', handleContactSubmit, true);
-
-  // Also intercept submit button clicks in case Framer suppresses native submit
-  document.addEventListener('click', function (e) {
-    const btn = e.target.closest('button[type="submit"]');
-    if (!btn) return;
-    const form = btn.closest('form');
+  // Intercept submit event synchronously with capture phase
+  document.addEventListener('submit', function (e) {
+    const form = e.target.closest ? (e.target.closest('form') || (e.target.tagName === 'FORM' ? e.target : null)) : e.target;
     if (!form || !form.querySelector('input[name="Name"]')) return;
 
-    if (form.reportValidity && !form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
 
-    handleContactSubmit({
-      target: form,
-      preventDefault: () => e.preventDefault(),
-      stopPropagation: () => e.stopPropagation(),
-      stopImmediatePropagation: () => e.stopImmediatePropagation && e.stopImmediatePropagation()
-    });
+    handleContactSubmit(form);
+  }, true);
+
+  // Also intercept submit button clicks synchronously to stop native navigation before it starts
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest ? e.target.closest('button[type="submit"]') : null;
+    if (!btn) return;
+    const form = btn.closest('form') || document.getElementById('portfolio-contact-form');
+    if (!form || !form.querySelector('input[name="Name"]')) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+
+    handleContactSubmit(form);
   }, true);
 
   // Run on start
