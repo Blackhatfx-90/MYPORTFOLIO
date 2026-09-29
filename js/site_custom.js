@@ -92,11 +92,26 @@
     });
   }
 
+  const RESUME_BIO = "I'm Priyanshu Shukla – a Fintech & AI Developer and B.Tech CSE student at Invertis University who builds modern websites, apps, AI chatbots, and trading automation. I specialize in building algorithmic trading bots in Pine Script and EA bots, custom charting interfaces, and AI tools with a strong UI/UX focus. Ready to hire, I deliver practical, high-performance, and budget-friendly solutions. Alongside client projects, I build things of my own – driven by curiosity, algorithmic problem-solving, and a commitment to creating intelligent products that solve real-world problems.";
+
   function updateTexts(root) {
     if (!root) return;
 
     removeFramerBadges();
     updateHeroAndNav(root);
+
+    // Ensure hero About bio container is updated to resume bio
+    const bioContainers = root.querySelectorAll ? root.querySelectorAll('.framer-12v651i-container, .framer-13x5u62') : [];
+    bioContainers.forEach(container => {
+      if (container.textContent && (container.textContent.includes('intersection of clarity and craft') || container.textContent.includes('designer who believes'))) {
+        const p = container.querySelector('p');
+        if (p) {
+          p.textContent = RESUME_BIO;
+        } else {
+          container.textContent = RESUME_BIO;
+        }
+      }
+    });
 
     // Walk text nodes
     const walker = document.createTreeWalker(
@@ -123,6 +138,19 @@
 
       if (val.includes('115 123-4567')) {
         node.nodeValue = val.replace(/\(\+20\)\s*115\s*123-4567/g, PHONE);
+      }
+
+      if (val.includes('Fenwick Studio')) {
+        node.nodeValue = val.replace(/Fenwick Studio/g, 'Apex Quant Labs');
+      }
+      if (val.includes('Marcus Holm')) {
+        node.nodeValue = val.replace(/Marcus Holm/g, 'Vikram Malhotra');
+      }
+      if (val.includes('Dayloom')) {
+        node.nodeValue = val.replace(/Dayloom/g, 'Synthetix AI');
+      }
+      if (val.includes('Layla Thornton')) {
+        node.nodeValue = val.replace(/Layla Thornton/g, 'Ananya Roy');
       }
     }
 
