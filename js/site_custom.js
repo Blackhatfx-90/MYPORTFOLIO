@@ -54,7 +54,8 @@
     'vridhi-ai': {
       title: 'Vridhi AI',
       url: 'https://vridhi-ai.onrender.com',
-      category: 'AI Intelligence App'
+      category: 'AI Intelligence App',
+      image: 'images/projects/vridhi-ai.png'
     }
   };
 
