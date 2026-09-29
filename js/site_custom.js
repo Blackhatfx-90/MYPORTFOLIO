@@ -1,13 +1,18 @@
 /**
  * Custom site runtime enhancements for Priyanshu Shukla's portfolio:
- * - Dynamic text updates (Priyanshu Shukla, email, phone)
+ * - Dynamic text updates:
+ *   - Top header logo: "AI Engineer"
+ *   - Main hero typography above Portfolio & About: "Priyanshu Shukla"
+ *   - Completely replaces any "Soren Weil" or "Soren" with "Priyanshu Shukla" / "Priyanshu"
+ * - Removes Framer overlay / Get Template button
  * - Portfolio links mapping to live deployed projects
  * - Floating Talk Now WhatsApp button integration
  */
 
 (function () {
-  const NAME = 'Priyanshu Shukla';
+  const HERO_NAME = 'Priyanshu Shukla';
   const FIRST_NAME = 'Priyanshu';
+  const NAV_TITLE = 'AI Engineer';
   const EMAIL = 'godfathersid3@gmail.com';
   const PHONE = '+91 9068839558';
   const WHATSAPP_URL = 'https://wa.me/919068839558';
@@ -45,8 +50,50 @@
     }
   };
 
+  function removeFramerBadges() {
+    try {
+      const selectors = [
+        '#__framer-badge-container',
+        '.framer-v5c18z',
+        '[data-framer-name="Get Template Button"]',
+        '[data-framer-badge]'
+      ];
+      selectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach(el => {
+          el.remove();
+        });
+      });
+    } catch (e) {}
+  }
+
+  function updateHeroAndNav(root) {
+    if (!root) return;
+
+    // 1. Top Navbar: ensure Logo is "AI Engineer"
+    const logos = root.querySelectorAll ? root.querySelectorAll('[data-framer-name="Logo"] p') : [];
+    logos.forEach(p => {
+      if (p.textContent !== NAV_TITLE) {
+        p.textContent = NAV_TITLE;
+      }
+    });
+
+    // 2. Hero kinetic title & Mouse Leave titles (directly above About & Portfolio): ensure "Priyanshu Shukla"
+    const heroTitles = root.querySelectorAll ? root.querySelectorAll(
+      '[data-framer-name="Name"] h1, [data-framer-name="Name (Mouse Leave)"] h1, .framer-ttdtt7 h1, .framer-1z0v65l h1'
+    ) : [];
+    heroTitles.forEach(h1 => {
+      const text = h1.textContent.trim();
+      if (text.includes('Soren') || text.includes('Weil')) {
+        h1.textContent = HERO_NAME;
+      }
+    });
+  }
+
   function updateTexts(root) {
     if (!root) return;
+
+    removeFramerBadges();
+    updateHeroAndNav(root);
 
     // Walk text nodes
     const walker = document.createTreeWalker(
@@ -62,7 +109,7 @@
       if (!val) continue;
 
       if (val.includes('Soren Weil')) {
-        node.nodeValue = val.replace(/Soren Weil/g, NAME);
+        node.nodeValue = val.replace(/Soren Weil/g, HERO_NAME);
       } else if (val.includes('Soren') && !val.includes('Priyanshu')) {
         node.nodeValue = val.replace(/Soren/g, FIRST_NAME);
       }
@@ -77,11 +124,11 @@
     }
 
     // Update document title if needed
-    if (document.title && document.title.includes('Soren Weil')) {
-      document.title = document.title.replace(/Soren Weil/g, NAME);
+    if (document.title && (document.title.includes('Soren Weil') || document.title.includes('Vexoo'))) {
+      document.title = `${HERO_NAME} – ${NAV_TITLE}`;
     }
 
-    // Update mailto and tel links
+    // Update mailto, tel, and portfolio links
     const links = (root.querySelectorAll ? root.querySelectorAll('a') : []);
     links.forEach(a => {
       const href = a.getAttribute('href');
@@ -150,16 +197,19 @@
   // Run on start
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
+      removeFramerBadges();
       updateTexts(document.body);
       ensureWhatsAppButton();
     });
   } else {
+    removeFramerBadges();
     updateTexts(document.body);
     ensureWhatsAppButton();
   }
 
   // Observe ongoing DOM changes / React hydration
   const observer = new MutationObserver(mutations => {
+    removeFramerBadges();
     for (const m of mutations) {
       if (m.type === 'characterData') {
         updateTexts(m.target.parentNode);
@@ -182,12 +232,13 @@
     characterData: true
   });
 
-  // Re-check periodically during first 5 seconds to catch any delayed Framer rendering
+  // Re-check periodically during first 8 seconds to catch any delayed Framer rendering / mouse leave
   let count = 0;
   const interval = setInterval(() => {
+    removeFramerBadges();
     updateTexts(document.body);
     ensureWhatsAppButton();
     count++;
-    if (count > 20) clearInterval(interval);
-  }, 250);
+    if (count > 30) clearInterval(interval);
+  }, 200);
 })();
