@@ -17,6 +17,20 @@ div[id*="__framer-badge"] {
   bottom: -9999px !important;
 }
 
+/* Ensure avatar and portrait photos are crisp black and white */
+[data-framer-name="Avatar"] img,
+.framer-vs50g9 img,
+.framer-1y7rt6b img,
+.framer-180g6a5 img,
+img[src*="priyanshu_avatar"],
+img[src*="priyanshu_portrait"],
+img[src*="WsnVxaSk0dKenAYdMT2G7bpCDAQ"],
+img[src*="7esgEDTfqoCmh2yHxI65XfkMOCI"] {
+  filter: grayscale(100%) contrast(108%) brightness(98%) !important;
+  -webkit-filter: grayscale(100%) contrast(108%) brightness(98%) !important;
+  object-fit: cover !important;
+}
+
 /* Floating Talk Now WhatsApp Button */
 .floating-whatsapp-btn {
   position: fixed;
