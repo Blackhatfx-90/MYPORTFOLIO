@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – Soren Weil</title>
+  <meta name="description" content="Get in touch with Soren Weil. Available for design direction, product design, and Framer development.">
+  
+  <link rel="icon" href="assets/images/H53zwtvCVdtLq91Rj8fb9VaNv5A.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="assets/images/0Jx5IAKnaB5WDUmqxmJCAy7bDg.png" media="(prefers-color-scheme: dark)">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    
+    <!-- Site Header -->
+    <header class="site-header">
+      <div class="brand-wrapper">
+        <a href="index.html" class="nav-back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Home</span>
+        </a>
+      </div>
+
+      <div class="nav-status">
+        <span>AI Design Engineer</span>
+      </div>
+
+      <div class="nav-actions">
+        <div class="live-time-wrapper">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="live-clock">Cairo • 12:50 PM</span>
+        </div>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Contact Page Container -->
+    <main class="contact-container">
+      
+      <!-- Direct Contact Info -->
+      <section class="contact-direct-info">
+        <h1 class="contact-headline">If you prefer not to fill out forms, feel free to email me directly and let's talk about the next big thing!</h1>
+
+        <div class="availability-badge">
+          <span class="status-dot"></span>
+          <span>One spot available for May, 2026</span>
+        </div>
+
+        <div class="contact-methods">
+          <a href="mailto:hello@soren.com" class="contact-method-card">
+            <span class="method-label">Email</span>
+            <span class="method-value">hello@soren.com</span>
+          </a>
+
+          <a href="tel:+201151234567" class="contact-method-card">
+            <span class="method-label">Phone</span>
+            <span class="method-value">(+20) 115 123-4567</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Project Inquiry Form -->
+      <section class="contact-form-wrapper">
+        <form id="contact-form">
+          
+          <div class="form-group">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" id="name" class="form-input" placeholder="What's your name?" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" class="form-input" placeholder="your.email@company.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">What's Your Project About?</label>
+            <div class="checkbox-pills-group">
+              <label class="checkbox-pill-label">
+                <input type="checkbox" name="service" value="Multipage Website Design">
+                <span class="checkbox-pill-text">Multipage Website Design</span>
+              </label>
+              <label class="checkbox-pill-label">
+                <input type="checkbox" name="service" value="Landing Page Design">
+                <span class="checkbox-pill-text">Landing Page Design</span>
+              </label>
+              <label class="checkbox-pill-label">
+                <input type="checkbox" name="service" value="Framer Website Development">
+                <span class="checkbox-pill-text">Framer Website Development</span>
+              </label>
+              <label class="checkbox-pill-label">
+                <input type="checkbox" name="service" value="Framer Landing Page Development">
+                <span class="checkbox-pill-text">Framer Landing Page Development</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Project Budget</label>
+            <div class="budget-group">
+              <label class="budget-pill-label">
+                <input type="radio" name="budget" value="$1k - $5k" checked>
+                <span class="budget-pill-text">$1k – $5k</span>
+              </label>
+              <label class="budget-pill-label">
+                <input type="radio" name="budget" value="$5k - $10k">
+                <span class="budget-pill-text">$5k – $10k</span>
+              </label>
+              <label class="budget-pill-label">
+                <input type="radio" name="budget" value="$10k - $20k">
+                <span class="budget-pill-text">$10k – $20k</span>
+              </label>
+              <label class="budget-pill-label">
+                <input type="radio" name="budget" value="> $20k">
+                <span class="budget-pill-text">&gt; $20k</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Share More Details</label>
+            <textarea id="message" class="form-textarea" placeholder="Tell me about your goals, timeline, and deliverables..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit Request</button>
+          
+          <div id="form-status" class="form-status" role="alert"></div>
+
+        </form>
+      </section>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <div class="social-links">
+        <a href="mailto:hello@soren.com" class="social-link">Email</a>
+        <a href="tel:+201151234567" class="social-link">Phone</a>
+        <a href="https://x.com/soren.weil" target="_blank" rel="noopener noreferrer" class="social-link">X (Twitter)</a>
+        <a href="https://instagram.com/its-soren" target="_blank" rel="noopener noreferrer" class="social-link">Instagram</a>
+        <a href="https://linkedin.com/in/weil.soren" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 Soren Weil. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
