@@ -154,30 +154,6 @@ const SCHEMA_JSON_LD = `
     </script>
 `;
 
-// Location badge for semantic crawl visibility
-const SEMANTIC_LOCATION_BADGE = `
-<!-- Semantic SEO Location & Bio Details for Search Engine Crawlers -->
-<div id="seo-author-badge" style="max-width:1200px;margin:30px auto 20px auto;padding:20px 24px;border-top:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.65);font-family:'Open Sauce Sans',Inter,sans-serif;font-size:13px;line-height:1.6;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
-  <div>
-    <span style="color:#ffffff;font-weight:600;font-size:14px;">Priyanshu Shukla (Blackhatfx / black.hat.fx)</span> • 
-    <span style="color:#ccf500;font-weight:500;">AI Engineer &amp; Full Stack Developer</span>
-    <div style="margin-top:4px;color:rgba(255,255,255,0.5);">
-      Education: <strong>Invertis University, Bareilly</strong> (B.Tech CSE) | Hometown: <strong>Pilibhit, Uttar Pradesh</strong>
-    </div>
-    <div style="margin-top:2px;font-size:12px;color:rgba(255,255,255,0.4);">
-      Projects: AI Websify, Bharat Dev AI, Veterian FX (Fintech Trading), Premium Verse, Med Mart, RaaMed &amp; Vridhi AI
-    </div>
-  </div>
-  <div style="display:flex;gap:12px;font-size:12px;align-items:center;">
-    <a href="https://github.com/Blackhatfx-90" target="_blank" rel="noopener noreferrer" style="color:#ffffff;text-decoration:none;">GitHub (@Blackhatfx-90)</a>
-    <span>•</span>
-    <a href="https://www.linkedin.com/in/priyanshu-shukla-35630b332" target="_blank" rel="noopener noreferrer" style="color:#ffffff;text-decoration:none;">LinkedIn</a>
-    <span>•</span>
-    <a href="https://wa.me/919068839558" target="_blank" rel="noopener noreferrer" style="color:#7ecc00;text-decoration:none;font-weight:600;">WhatsApp</a>
-  </div>
-</div>
-`;
-
 // Page SEO Metadata Dictionary
 const PAGE_SEO = {
   'index.html': {
@@ -294,10 +270,8 @@ function patchFileSEO(relPath) {
     html = html.replace(/<\/head>/i, `${SCHEMA_JSON_LD}\n</head>`);
   }
 
-  // 9. Add Semantic Location Badge on index.html and about.html before closing body
-  if ((relPath === 'index.html' || relPath === 'about.html') && !html.includes('id="seo-author-badge"')) {
-    html = html.replace(/<script src="js\/site_custom\.js"><\/script>/i, `${SEMANTIC_LOCATION_BADGE}\n  <script src="js/site_custom.js"></script>`);
-  }
+  // 9. Strip any legacy seo-author-badge if present
+  html = html.replace(/\s*<!--\s*Semantic SEO Location & Bio Details for Search Engine Crawlers\s*-->\s*<div id="seo-author-badge"[\s\S]*?<\/div>\s*/gi, '\n\n  ');
 
   // 10. Clean any leftover vexoo or vercel references in the page
   html = html.replace(/https:\/\/vexoo\.framer\.website/g, DEFAULT_DOMAIN);
