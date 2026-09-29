@@ -3,8 +3,8 @@ const path = require('path');
 
 const rootDir = path.resolve(__dirname, '..');
 
-// Default domain - can be customized or overridden
-const DEFAULT_DOMAIN = 'https://myportfolio-blackhatfx-90.vercel.app';
+// Default domain - user's verified custom live domain
+const DEFAULT_DOMAIN = 'https://aiwebify.site';
 
 // All pages to index in sitemap
 const SITEMAP_PAGES = [
@@ -299,8 +299,9 @@ function patchFileSEO(relPath) {
     html = html.replace(/<script src="js\/site_custom\.js"><\/script>/i, `${SEMANTIC_LOCATION_BADGE}\n  <script src="js/site_custom.js"></script>`);
   }
 
-  // 10. Clean any leftover vexoo.framer.website references in the page
+  // 10. Clean any leftover vexoo or vercel references in the page
   html = html.replace(/https:\/\/vexoo\.framer\.website/g, DEFAULT_DOMAIN);
+  html = html.replace(/https:\/\/myportfolio-blackhatfx-90\.vercel\.app/g, DEFAULT_DOMAIN);
 
   fs.writeFileSync(filePath, html, 'utf8');
   console.log(`Updated SEO metadata in: ${relPath}`);

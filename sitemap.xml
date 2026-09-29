@@ -4,55 +4,55 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://myportfolio-blackhatfx-90.vercel.app/</loc>
+    <loc>https://aiwebify.site/</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://myportfolio-blackhatfx-90.vercel.app/about</loc>
+    <loc>https://aiwebify.site/about</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://myportfolio-blackhatfx-90.vercel.app/portfolio</loc>
+    <loc>https://aiwebify.site/portfolio</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://myportfolio-blackhatfx-90.vercel.app/contact</loc>
+    <loc>https://aiwebify.site/contact</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://myportfolio-blackhatfx-90.vercel.app/portfolio/travel-easy</loc>
+    <loc>https://aiwebify.site/portfolio/travel-easy</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://myportfolio-blackhatfx-90.vercel.app/portfolio/gamma</loc>
+    <loc>https://aiwebify.site/portfolio/gamma</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://myportfolio-blackhatfx-90.vercel.app/portfolio/stream-ai</loc>
+    <loc>https://aiwebify.site/portfolio/stream-ai</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://myportfolio-blackhatfx-90.vercel.app/portfolio/foome</loc>
+    <loc>https://aiwebify.site/portfolio/foome</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://myportfolio-blackhatfx-90.vercel.app/portfolio/edbost</loc>
+    <loc>https://aiwebify.site/portfolio/edbost</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
