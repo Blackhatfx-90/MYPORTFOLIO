@@ -24,27 +24,32 @@
     'travel-easy': {
       title: 'Veterian FX',
       url: 'https://veterian-fx.vercel.app',
-      category: 'Fintech / Trading'
+      category: 'Fintech / Trading',
+      image: 'images/projects/veterian-fx.png'
     },
     'gamma': {
       title: 'Bharat Dev AI',
       url: 'https://bharat-dev-ai.vercel.app',
-      category: 'AI Platform / Dev'
+      category: 'AI Platform / Dev',
+      image: 'images/projects/bharat-dev-ai.png'
     },
     'stream-ai': {
       title: 'Premium Verse',
       url: 'https://premium-verse.vercel.app',
-      category: 'Web3 & Creative Tech'
+      category: 'Web3 & Creative Tech',
+      image: 'images/projects/premium-verse.png'
     },
     'foome': {
       title: 'Med Mart',
       url: 'https://med-mart.in',
-      category: 'E-Commerce / Health'
+      category: 'E-Commerce / Health',
+      image: 'images/projects/med-mart.png'
     },
     'edbost': {
       title: 'RaaMed',
       url: 'https://raamed.online',
-      category: 'Healthcare Solutions'
+      category: 'Healthcare Solutions',
+      image: 'images/projects/raamed.png'
     },
     'vridhi-ai': {
       title: 'Vridhi AI',
@@ -191,12 +196,24 @@
         }
       }
 
-      // Check project links
+      // Check project links and update preview images
       for (const [slug, proj] of Object.entries(PROJECT_MAP)) {
-        if (href.includes(slug)) {
+        if (href.includes(slug) || (proj.url && href === proj.url)) {
           a.setAttribute('href', proj.url);
           a.setAttribute('target', '_blank');
           a.setAttribute('rel', 'noopener noreferrer');
+
+          if (proj.image) {
+            const cardImgs = a.querySelectorAll('img');
+            cardImgs.forEach(img => {
+              if (img.getAttribute('src') !== proj.image) {
+                img.setAttribute('src', proj.image);
+                img.setAttribute('srcset', proj.image);
+                img.style.objectPosition = 'top';
+                img.style.objectFit = 'cover';
+              }
+            });
+          }
         }
       }
     });
