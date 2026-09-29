@@ -16,6 +16,9 @@
   const EMAIL = 'godfathersid3@gmail.com';
   const PHONE = '+91 9068839558';
   const WHATSAPP_URL = 'https://wa.me/919068839558';
+  const RESUME_URL = 'https://drive.google.com/file/d/1zNmpFoW4msuZVnZGkRDq8nEgqqqsyhbe/view?usp=sharing';
+  const GITHUB_URL = 'https://github.com/Blackhatfx-90';
+  const LINKEDIN_URL = 'https://www.linkedin.com/in/priyanshu-shukla-35630b332';
 
   const PROJECT_MAP = {
     'travel-easy': {
@@ -128,7 +131,7 @@
       document.title = `${HERO_NAME} – ${NAV_TITLE}`;
     }
 
-    // Update mailto, tel, and portfolio links
+    // Update mailto, tel, resume, linkedin, github, and portfolio links
     const links = (root.querySelectorAll ? root.querySelectorAll('a') : []);
     links.forEach(a => {
       const href = a.getAttribute('href');
@@ -139,6 +142,25 @@
       }
       if (href.includes('tel:')) {
         a.setAttribute('href', `tel:+919068839558`);
+      }
+      if (href.includes('drive.google.com') || a.textContent.includes('Resume')) {
+        a.setAttribute('href', RESUME_URL);
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      }
+      if (href.includes('linkedin.com')) {
+        a.setAttribute('href', LINKEDIN_URL);
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      }
+      if (href.includes('x.com') || href.includes('github.com')) {
+        a.setAttribute('href', GITHUB_URL);
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+        const textNode = a.querySelector('p');
+        if (textNode && (textNode.textContent.includes('priyanshu') || textNode.textContent.includes('@'))) {
+          textNode.textContent = '@Blackhatfx-90';
+        }
       }
 
       // Check project links
@@ -158,6 +180,24 @@
     if (!anchor) return;
 
     const href = anchor.getAttribute('href') || '';
+    if (href.includes('drive.google.com') || (anchor.textContent && anchor.textContent.trim().endsWith('Resume'))) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.open(RESUME_URL, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    if (href.includes('linkedin.com')) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.open(LINKEDIN_URL, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    if (href.includes('github.com') || href === 'https://x.com' || href === 'https://x.com/') {
+      e.preventDefault();
+      e.stopPropagation();
+      window.open(GITHUB_URL, '_blank', 'noopener,noreferrer');
+      return;
+    }
     for (const [slug, proj] of Object.entries(PROJECT_MAP)) {
       if (href.includes(slug) || href === proj.url) {
         e.preventDefault();
