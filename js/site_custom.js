@@ -92,7 +92,7 @@
     });
   }
 
-  const RESUME_BIO = "I'm Priyanshu Shukla – a Fintech & AI Developer and B.Tech CSE student at Invertis University who builds modern websites, apps, AI chatbots, and trading automation. I specialize in building algorithmic trading bots in Pine Script and EA bots, custom charting interfaces, and AI tools with a strong UI/UX focus. Ready to hire, I deliver practical, high-performance, and budget-friendly solutions. Alongside client projects, I build things of my own – driven by curiosity, algorithmic problem-solving, and a commitment to creating intelligent products that solve real-world problems.";
+  const RESUME_BIO = "I'm Priyanshu Shukla (known online as Blackhatfx / black.hat.fx) – an AI Engineer, Full Stack Developer, and B.Tech CSE student at Invertis University, Bareilly, originally from Pilibhit, Uttar Pradesh. I craft modern AI Websify platforms, intelligent automation, fintech systems, and algorithmic trading bots. With a sharp focus on UI/UX excellence, machine learning, and clean engineering, I build high-performance products that deliver real value.";
 
   function updateTexts(root) {
     if (!root) return;

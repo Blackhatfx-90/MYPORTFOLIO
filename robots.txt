@@ -1,0 +1,9 @@
+# Robots.txt for Priyanshu Shukla (Blackhatfx) Portfolio
+User-agent: *
+Allow: /
+Disallow: /raw_pages/
+Disallow: /tools/
+Disallow: /framer_offline/
+
+# XML Sitemap
+Sitemap: https://myportfolio-blackhatfx-90.vercel.app/sitemap.xml
