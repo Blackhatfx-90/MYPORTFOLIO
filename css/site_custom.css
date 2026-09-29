@@ -135,3 +135,133 @@ img[src*="7esgEDTfqoCmh2yHxI65XfkMOCI"] {
     height: 14px;
   }
 }
+
+/* ========================================================
+   ABOUT PAGE: Left Side Photo, Right Side Paragraph Layout
+   ======================================================== */
+@media (min-width: 700px) {
+  section.framer-1o8s4o2,
+  .framer-BFQiQ .framer-1o8s4o2,
+  section[data-framer-name="About"] {
+    display: grid !important;
+    grid-template-columns: minmax(300px, 38%) 1fr !important;
+    column-gap: 56px !important;
+    row-gap: 40px !important;
+    align-items: start !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  /* Flatten Title container so Heading and Text are direct grid children */
+  section.framer-1o8s4o2 > .framer-nzlog8,
+  .framer-BFQiQ .framer-nzlog8,
+  [data-framer-name="About"] > [data-framer-name="Title"] {
+    display: contents !important;
+  }
+
+  /* 1. Heading "About": spans top row */
+  section.framer-1o8s4o2 .framer-q8w2mi,
+  .framer-BFQiQ .framer-q8w2mi,
+  [data-framer-name="About"] [data-framer-name="Heading"] {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+  }
+
+  /* 2. Photo / Avatar on the LEFT */
+  section.framer-1o8s4o2 > .framer-m59c0e,
+  .framer-BFQiQ .framer-m59c0e,
+  [data-framer-name="About"] > [data-framer-name="Avatar"] {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+  }
+
+  section.framer-1o8s4o2 .framer-17dh55g,
+  .framer-BFQiQ .framer-17dh55g,
+  [data-framer-name="About"] [data-framer-name="Image"] {
+    width: 100% !important;
+    max-width: 460px !important;
+    align-self: flex-start !important;
+    margin: 0 !important;
+  }
+
+  /* 3. Paragraph on the RIGHT */
+  section.framer-1o8s4o2 .framer-10ljpoz,
+  .framer-BFQiQ .framer-10ljpoz,
+  [data-framer-name="About"] [data-framer-name="Text"] {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding-top: 10px !important;
+  }
+
+  /* Hide the spacer that pushed paragraph right */
+  section.framer-1o8s4o2 .framer-85gj3z,
+  .framer-BFQiQ .framer-85gj3z,
+  [data-framer-name="About"] [data-framer-name="Spacer"] {
+    display: none !important;
+  }
+
+  /* Allow the paragraph text container to expand */
+  section.framer-1o8s4o2 .framer-12v651i-container,
+  .framer-BFQiQ .framer-12v651i-container,
+  [data-framer-name="About"] [data-framer-appear-id="12v651i"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 699.98px) {
+  section.framer-1o8s4o2,
+  .framer-BFQiQ .framer-1o8s4o2,
+  section[data-framer-name="About"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 36px !important;
+  }
+
+  section.framer-1o8s4o2 > .framer-nzlog8,
+  .framer-BFQiQ .framer-nzlog8,
+  [data-framer-name="About"] > [data-framer-name="Title"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  section.framer-1o8s4o2 .framer-m59c0e,
+  .framer-BFQiQ .framer-m59c0e,
+  [data-framer-name="About"] [data-framer-name="Avatar"] {
+    width: 100% !important;
+    align-items: center !important;
+  }
+
+  section.framer-1o8s4o2 .framer-17dh55g,
+  .framer-BFQiQ .framer-17dh55g,
+  [data-framer-name="About"] [data-framer-name="Image"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  section.framer-1o8s4o2 .framer-85gj3z,
+  .framer-BFQiQ .framer-85gj3z,
+  [data-framer-name="About"] [data-framer-name="Spacer"] {
+    display: none !important;
+  }
+
+  section.framer-1o8s4o2 .framer-12v651i-container,
+  .framer-BFQiQ .framer-12v651i-container,
+  [data-framer-name="About"] [data-framer-appear-id="12v651i"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
